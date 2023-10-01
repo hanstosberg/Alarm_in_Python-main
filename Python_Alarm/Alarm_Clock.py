@@ -1,5 +1,5 @@
 from tkinter import *
-
+import time
 class AlarmClock:
     def __init__(self):
         self.root = Tk()
@@ -10,6 +10,10 @@ class AlarmClock:
         self.cn = Canvas(self.root, bg='white', height=30, width=30)
         self.canvas = Canvas(self.root, bg='white', height=self.screen_height, width=self.screen_width)
         self.root.title('Будильник')
+        self.lbl = Label(self.root, text=f'Текущее время: {str(time.strftime("%H:%M:%S", time.localtime()))[:5]}',
+                         bg='#FFCC00', fg='#000000', bd=2, font='Verdana', width=80, height=2)
+        self.hour = Label(self.root, text='Введите час',
+                          fg='#000000', bd=2, font='Verdana', width=15, height=1)
 
         self.hour = Label(self.root, text='Введите час',
                           fg='#000000', bd=2, font='Verdana', width=15, height=1)
@@ -23,7 +27,7 @@ class AlarmClock:
         self.variable = StringVar(self.root)
 
         self.shr = OptionMenu(self.root, self.variable, 'Мелодия 1', 'Мелодия 2', 'Мелодия 3', 'Мелодия 4', 'Мелодия 5')
-
+        self.lbl.pack()
         self.hour.place(x=45, y=100)
         self.minutes.place(x=45, y=140)
         self.text_hour.place(x=260, y=100)
