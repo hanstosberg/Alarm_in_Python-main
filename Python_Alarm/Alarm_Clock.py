@@ -46,13 +46,20 @@ class AlarmClock:
         self.root.mainloop()
 
     def start(self):
-        AlarmClock.minutesLeft(self, self.currentTime,self.text_houre, self.text_minutese)
+        try:
+            currentTime = str(time.strftime("%H:%M:%S", time.localtime()))
+            text_houre = str(self.text_hour.get())
+            text_minutese = str(self.text_minutes.get())
+            count = AlarmClock.minutesLeft(self, currentTime,self.text_houre, self.text_minutese)
+        except:
+            pass
 
-        return 0
 
-    def minutesLeft(self, currentTime, text_houre, text_minutese):
+    def minutesLeft(self, currentTime, text_hour, text_minutes):
+        count = (int(text_hour) - int(currentTime[:2])) * 60 + (int(text_minutes) - int(currentTime[3:5]))
+        return count
 
-        return 0
+
 
 
 
