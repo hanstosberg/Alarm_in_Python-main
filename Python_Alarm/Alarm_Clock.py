@@ -1,7 +1,12 @@
 from tkinter import *
 import time
+
+
 class AlarmClock:
     def __init__(self):
+        self.text_houre = None
+        self.text_minutese = None
+        self.currentTime = None
         self.root = Tk()
         self.root.geometry("430x450")
         self.root.resizable(width=False, height=False)
@@ -23,7 +28,7 @@ class AlarmClock:
         self.text_minutes = Entry(self.root, bg='#CECECE', font='Cambria', justify='center', width=5)
 
         self.btn = Button(self.root, text=" Установить будильник ", width=35, height=2, bg='#6EA6C1',
-                          fg='#000000', font=('Verdana', 13, 'bold'))
+                          fg='#000000', font=('Verdana', 13, 'bold'), command=self.start)
         self.miusik = Label(self.root, text=f'Выберете мелодию:',
                             bg='#FFCC00', fg='#000000', bd=2, font='Verdana', width=20, height=2)
         self.variable = StringVar(self.root)
@@ -40,4 +45,14 @@ class AlarmClock:
         self.canvas.pack()
         self.root.mainloop()
 
-alarm_clock = AlarmClock()
+    def start(self):
+        AlarmClock.minutesLeft(self, self.currentTime,self.text_houre, self.text_minutese)
+
+        return 0
+
+    def minutesLeft(self, currentTime, text_houre, text_minutese):
+
+        return 0
+
+
+
