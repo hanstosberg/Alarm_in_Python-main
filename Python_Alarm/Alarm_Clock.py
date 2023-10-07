@@ -43,7 +43,8 @@ class AlarmClock:
         try:
             text_houre = self.text_hour.get()
             text_minutese = self.text_minutes.get()
-            count = AlarmClock.minutesLeft(self, text_houre, text_minutese)
+            timee = str(time.strftime("%H:%M:%S", time.localtime()))
+            count = AlarmClock.minutesLeft(self, timee,text_houre, text_minutese)
 
             if count > -1 and (int(text_houre) <= 23 and int(text_minutese) <= 59):
 
@@ -63,9 +64,7 @@ class AlarmClock:
         except:
             pass
 
-    def minutesLeft(self, text_houre, text_minutese):
-        timee = str(time.strftime("%H:%M:%S", time.localtime()))
-        print(timee)
+    def minutesLeft(self, timee,text_houre, text_minutese):
         count = (int(self.text_hour.get()) - int(timee[:2])) * 60 + (int(self.text_minutes.get()) - int(timee[3:5]))
         return count
 
@@ -83,6 +82,8 @@ class AlarmClock:
         return
 
     def time_checker(self, time_now,text_houre, text_minutese,i):
+        print(time_now[:5])
+        print(f'{text_houre}:{text_minutese}')
         if time_now[:5] == f'{text_houre}:{text_minutese}' and i:
             i = False
         return i
