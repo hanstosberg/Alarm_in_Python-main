@@ -52,6 +52,10 @@ class AlarmClock:
             text_minutese = str(self.text_minutes.get())
             count = AlarmClock.minutesLeft(self, currentTime,self.text_houre, self.text_minutese)
 
+            timee = 0
+            i = 0
+            AlarmClock.time_checker(self, timee, text_houre, text_minutese, i)
+
         except:
             pass
 
@@ -72,6 +76,9 @@ class AlarmClock:
         time.sleep(20)
         self.root.destroy()
         return 0
+
+    def time_checker(self, time_now, text_houre, text_minutese, i):
+        return i
 
 
 

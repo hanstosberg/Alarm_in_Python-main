@@ -1,5 +1,7 @@
 from Alarm_Clock import AlarmClock
 import unittest
+import sys
+
 
 class AlarmClockTest(unittest.TestCase):
     def test_alarm_clock(self):
@@ -10,6 +12,10 @@ class AlarmClockTest(unittest.TestCase):
         self.assertEqual(result, 210)
         result = self.alarm_clock.minutesLeft('10:00:00',"10", "37")
         self.assertEqual(result, 37)
+
+    def test_time_checker(self):
+        result = self.alarm_clock.time_checker('10:00:00','10', "13", True)
+        self.assertEqual(result, False)
 
 
 if __name__ == "__main__":
