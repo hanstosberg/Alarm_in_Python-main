@@ -1,5 +1,7 @@
-from tkinter import *
+import sys
+import pyglet
 import time
+from tkinter import *
 
 
 class AlarmClock:
@@ -51,10 +53,18 @@ class AlarmClock:
             text_houre = str(self.text_hour.get())
             text_minutese = str(self.text_minutes.get())
             count = AlarmClock.minutesLeft(self, currentTime,self.text_houre, self.text_minutese)
+            if count > -1 and (int(text_houre) <= 23 and int(text_minutese) <= 59):
 
-            timee = 0
-            i = 0
-            AlarmClock.time_checker(self, timee, text_houre, text_minutese, i)
+                AlarmClock.set_timer(self, count)
+                i = True
+                while True:
+                    timee = str(time.strftime("%H:%M:%S", time.localtime()))
+                    if AlarmClock.time_checker(self, timee,text_houre, text_minutese, i) == False:
+                        mus = self.variable.get()
+                        AlarmClock.soundPlay(self,mus)
+
+                    time.sleep(1)
+
 
         except:
             pass
@@ -84,5 +94,10 @@ class AlarmClock:
             return i
 
 
-
+    def soundPlay(self, mus):
+        sound = pyglet.media.load(f'{mus}.mp3', streaming=True)
+        print('sound', sound)
+        sound.play()
+        time.sleep(30)
+        sys.exit()
 
