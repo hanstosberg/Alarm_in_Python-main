@@ -78,7 +78,10 @@ class AlarmClock:
         return 0
 
     def time_checker(self, time_now, text_houre, text_minutese, i):
-        return i
+        def time_checker(self, time_now, text_houre, text_minutese, i):
+            if time_now[:5] == f'{text_houre}:{text_minutese}' and i:
+                i = False
+            return i
 
 
 

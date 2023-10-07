@@ -16,7 +16,10 @@ class AlarmClockTest(unittest.TestCase):
     def test_time_checker(self):
         result = self.alarm_clock.time_checker('10:00:00','10', "13", True)
         self.assertEqual(result, False)
-
+        result = self.alarm_clock.time_checker('10:00:00','10', "10", True)
+        self.assertEqual(result, False)
+        result = self.alarm_clock.time_checker('10:00:00','10', "00", True)
+        self.assertEqual(result, True)
 
 if __name__ == "__main__":
   unittest.main()
