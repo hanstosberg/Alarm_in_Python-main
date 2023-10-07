@@ -51,6 +51,7 @@ class AlarmClock:
             text_houre = str(self.text_hour.get())
             text_minutese = str(self.text_minutes.get())
             count = AlarmClock.minutesLeft(self, currentTime,self.text_houre, self.text_minutese)
+
         except:
             pass
 
@@ -59,6 +60,18 @@ class AlarmClock:
         count = (int(text_hour) - int(currentTime[:2])) * 60 + (int(text_minutes) - int(currentTime[3:5]))
         return count
 
+    def set_timer(self, count):
+        l = Label(self.root, text=f'Установлен на {self.text_hour.get()}:{self.text_minutes.get()}',
+                  bg='#FFCC00', fg='#000000', bd=2, font='Verdana', width=33, height=2)
+        l.place(x=0, y=340)
+        l = Label(self.root, text=f'Воспроизведется через {count} мин.',
+                  bg='#FFCC00', fg='#000000', bd=2, font='Verdana', width=33, height=2)
+        l.place(x=0, y=400)
+        self.root.update()
+        print(self.root)
+        time.sleep(20)
+        self.root.destroy()
+        return 0
 
 
 
